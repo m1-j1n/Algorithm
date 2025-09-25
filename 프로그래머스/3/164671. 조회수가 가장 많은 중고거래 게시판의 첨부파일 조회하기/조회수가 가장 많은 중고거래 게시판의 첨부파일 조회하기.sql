@@ -1,0 +1,17 @@
+SELECT CONCAT(
+           '/home/grep/src/', 
+           b.BOARD_ID, '/', 
+           f.FILE_ID, 
+           f.FILE_NAME, 
+           f.FILE_EXT
+       ) AS FILE_PATH
+FROM USED_GOODS_FILE f
+JOIN USED_GOODS_BOARD b
+  ON f.BOARD_ID = b.BOARD_ID
+WHERE b.BOARD_ID = (
+    SELECT BOARD_ID
+    FROM USED_GOODS_BOARD
+    ORDER BY VIEWS DESC
+    LIMIT 1
+)
+ORDER BY f.FILE_ID DESC;
