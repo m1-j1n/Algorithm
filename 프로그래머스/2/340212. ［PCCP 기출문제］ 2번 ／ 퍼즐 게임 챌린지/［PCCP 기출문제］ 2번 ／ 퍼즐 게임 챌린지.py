@@ -19,10 +19,7 @@ def solution(diffs, times, limit):
                 total += times[idx]
 
             else:
-                if idx - 1 >= 0:
-                    total += (diff - level) * (times[idx - 1] + times[idx]) + times[idx]
-                else:
-                    total += (diff - level + 1) * times[idx]
+                total += (diff - level) * (times[idx - 1] + times[idx]) + times[idx]
         
         # 탐색완료했다면?
         if limit >= total:
